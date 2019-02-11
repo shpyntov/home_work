@@ -10,7 +10,7 @@ class TestStatusCode:
         code = str(post(BASE_URL + code).status_code)
         return code
 
-    @pytest.mark.parametrize("test_input,expected", [
+    @pytest.mark.parametrize("requested_code,expected_code", [
         ("100", "100"),
         ("200", "200"),
         ("302", "302"),
@@ -22,5 +22,5 @@ class TestStatusCode:
         ("666", "400"),
         ("123456", "400")
     ])
-    def test_code(self, test_input, expected):
-        assert_that(self.get_code(test_input), equal_to(expected))
+    def test_code(self, requested_code, expected_code):
+        assert_that(self.get_code(requested_code), equal_to(expected_code))
