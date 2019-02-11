@@ -6,8 +6,9 @@ BASE_URL = 'http://httpbin.org/status/'
 
 
 class TestStatusCode:
-    def get_code(self, code):
-        code = str(post(BASE_URL + code).status_code)
+    def get_code(self, requested_code):
+        code = str(post(BASE_URL + requested_code).status_code)
+        print(str(requested_code) + " --> " + str(code))
         return code
 
     @pytest.mark.parametrize("requested_code,expected_code", [

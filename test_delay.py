@@ -8,8 +8,9 @@ BASE_URL = 'http://httpbin.org/delay/'
 
 class TestDelay:
     def get_delay(self, requested_delay):
-        time = int(get(BASE_URL + str(requested_delay)).elapsed.total_seconds())
-        return time
+        delay = int(get(BASE_URL + str(requested_delay)).elapsed.total_seconds())
+        print(str(requested_delay) + " --> " + str(delay))
+        return delay
 
     @pytest.mark.parametrize("requested_delay,expected_delay", [
         (randint(-20, -1), 0),
